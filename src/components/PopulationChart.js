@@ -1,40 +1,33 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { 
-  Chart as ChartJS, 
-  CategoryScale, 
-  LinearScale, 
-  BarElement, 
-  Title, 
-  Tooltip, 
-  Legend 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
 } from 'chart.js';
-;
+
 ChartJS.register(
-  CategoryScale, 
-  LinearScale, 
-  BarElement, 
-  Title, 
-  Tooltip, 
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
   Legend
 );
 
-const PopulationChart = ({ countries, selectedCountry }) => {
-  // Determine data to display
-  const displayCountries = selectedCountry 
-    ? [selectedCountry] 
-    : countries.slice(0, 10);
-
+const PopulationChart = ({ countries }) => {
   const chartData = {
-    labels: displayCountries.map(country => country.city),
+    labels: countries.map(country => country.name),
     datasets: [
       {
         label: 'Population',
-        data: displayCountries.map(country => 
-          country.populationCounts?.[0]?.value || 0
-        ),
-        backgroundColor: 'rgba(255, 182, 193, 0.6)', // Baby pink with transparency
-        borderColor: 'rgba(255, 182, 193, 1)',       // Solid baby pink for border
+        data: countries.map(country => country.population),
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1,
       },
     ],
@@ -48,17 +41,31 @@ const PopulationChart = ({ countries, selectedCountry }) => {
       },
       title: {
         display: true,
-        text: selectedCountry 
-          ? `Population of ${selectedCountry.city}` 
-          : 'Top 10 Cities Population',
+        text: countries.length === 1 ? 'Country Population' : 'Top 10 Countries by Population',
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: (value) => {
+            return new Intl.NumberFormat('en-US', {
+              notation: 'compact',
+              compactDisplay: 'short',
+            }).format(value);
+          },
+        },
       },
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  return (
+    <Card>
+      <CardContent>
+        <Bar data={chartData} options={options} />
+      </CardContent>
+    </Card>
+  );
 };
 
 export default PopulationChart;
-
-
-
