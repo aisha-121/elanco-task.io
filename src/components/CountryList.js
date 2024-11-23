@@ -1,4 +1,6 @@
 import React from 'react';
+import './styles.css';  // import the styles.css file
+
 import { 
   List, 
   ListItem, 
@@ -7,24 +9,26 @@ import {
 } from '@mui/material';
 
 const CountryList = ({ countries, selectedCountry }) => {
-  // Determine data to display
+  // determine which countries to display based on selection
   const displayCountries = selectedCountry 
     ? [selectedCountry] 
     : countries.slice(0, 10);
 
   return (
     <>
+      {/* display the title depending on whether a country is selected */}
       <Typography variant="h6" gutterBottom>
         {selectedCountry 
-          ? `Details for ${selectedCountry.city}` 
-          : 'Top 10 Cities'}
+          ? `details for ${selectedCountry.city}` 
+          : 'top 10 cities'}
       </Typography>
       <List>
+        {/* map through the countries to display their data */}
         {displayCountries.map((country, index) => (
           <ListItem key={index} divider>
             <ListItemText
-              primary={country.city}
-              secondary={`Population: ${country.populationCounts?.[0]?.value.toLocaleString() || 'N/A'}`}
+              primary={country.city}  // country city
+              secondary={`Population: ${country.populationCounts?.[0]?.value.toLocaleString() || 'N/A'}`}  // population
             />
           </ListItem>
         ))}
@@ -34,4 +38,5 @@ const CountryList = ({ countries, selectedCountry }) => {
 };
 
 export default CountryList;
+
 

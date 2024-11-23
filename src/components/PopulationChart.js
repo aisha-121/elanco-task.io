@@ -1,5 +1,8 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import './styles.css';  // import the styles.css file
+
+import { Card, CardContent } from '@mui/material'; 
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +13,7 @@ import {
   Legend
 } from 'chart.js';
 
+// register necessary chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,37 +24,39 @@ ChartJS.register(
 );
 
 const PopulationChart = ({ countries }) => {
+  // prepare chart data
   const chartData = {
-    labels: countries.map(country => country.name),
+    labels: countries.map(country => country.name),  // country names as labels
     datasets: [
       {
-        label: 'Population',
-        data: countries.map(country => country.population),
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
+        label: 'Population',  // dataset label
+        data: countries.map(country => country.population),  // population data
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',  // pink bar chart
+        borderColor: 'rgba(54, 162, 235, 1)',  // pink border 
+        borderWidth: 1,  // border width
       },
     ],
   };
 
+  // chart configuration options
   const options = {
-    responsive: true,
+    responsive: true,  // makes the chart responsive
     plugins: {
       legend: {
-        position: 'top',
+        position: 'top',  // legend on top
       },
       title: {
-        display: true,
-        text: countries.length === 1 ? 'Country Population' : 'Top 10 Countries by Population',
+        display: true,  // show chart title
+        text: countries.length === 1 ? 'country population' : 'top 10 countries by population',  // dynamic title
       },
     },
     scales: {
       y: {
-        beginAtZero: true,
+        beginAtZero: true,  // start y-axis at 0
         ticks: {
           callback: (value) => {
             return new Intl.NumberFormat('en-US', {
-              notation: 'compact',
+              notation: 'compact',  // compact number formatting
               compactDisplay: 'short',
             }).format(value);
           },
@@ -62,6 +68,7 @@ const PopulationChart = ({ countries }) => {
   return (
     <Card>
       <CardContent>
+        {/* render the bar chart */}
         <Bar data={chartData} options={options} />
       </CardContent>
     </Card>

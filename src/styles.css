@@ -1,28 +1,72 @@
+/* set the font for the entire page */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;  /* default font for the body */
+  margin: 0;  /* remove default margin */
+  padding: 0;  /* remove default padding */
+  background-color: #f4f4f4;  /* light gray background color */
 }
 
+/* style for all h1 and h2 headings */
 h1, h2 {
-  text-align: center;
+  text-align: center;  /* center-align the headings */
 }
 
+/* styling for the main app container */
 .App {
-  padding: 20px;
+  padding: 20px;  /* add padding inside the .App container */
 }
 
+/* remove default list styles for unordered lists */
 ul {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none;  /* removes bullet points */
+  padding: 0;  /* remove default padding */
 }
 
+/* style for each list item */
 li {
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 5px 0;
-  background-color: #fff;
+  padding: 10px;  /* space inside each list item */
+  border: 1px solid #ccc;  /* light gray border around list items */
+  margin: 5px 0;  /* space between list items */
+  background-color: #fff;  /* white background for each list item */
 }
+
+/* Adds a white border around the Autocomplete input field */
+.MuiOutlinedInput-root {
+  border: 1px solid white !important; /* White border for the input field */
+}
+
+/* Add a white border around the dropdown list */
+.MuiAutocomplete-listbox {
+  border: 1px solid white !important; /* White border around the dropdown list */
+  background-color: #fff;  /* Optional: Set a white background for the dropdown */
+}
+
+/* Optional: Add a white border around each ListItem in the dropdown */
+.MuiListItem-root {
+  border: 1px solid white !important; /* White border around each list item */
+}
+
+/* Optional: Customize the highlighted item when hovered or selected */
+.MuiAutocomplete-option.Mui-focused {
+  background-color: rgba(255, 182, 193, 0.6); /* Optional: Highlight color for focused item */
+  border: 1px solid white; /* Optional: White border for focused item */
+}
+
+/* Optional: Add a white border around the Autocomplete Paper (dropdown container) */
+.MuiAutocomplete-paper {
+  box-shadow: none !important; /* Removes shadow from the dropdown */
+  border: 1px solid white !important; /* White border for the dropdown paper */
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
