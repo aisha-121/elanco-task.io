@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/elanco-task/static/css/main.d5630977.css",
+    "main.js": "/elanco-task/static/js/main.07687af0.js",
+    "index.html": "/elanco-task/index.html",
+    "main.d5630977.css.map": "/elanco-task/static/css/main.d5630977.css.map",
+    "main.07687af0.js.map": "/elanco-task/static/js/main.07687af0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5630977.css",
+    "static/js/main.07687af0.js"
+  ]
+}
